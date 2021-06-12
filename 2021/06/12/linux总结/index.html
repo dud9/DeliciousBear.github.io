@@ -6,15 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>欢迎来到 Duende 的博客</title>
+  <title>linux总结 | 欢迎来到 Duende 的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="欢迎来到 Duende 的博客">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="linux总结">
+<meta property="og:url" content="http://example.com/2021/06/12/linux%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="欢迎来到 Duende 的博客">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612231900027.png">
+<meta property="og:image" content="http://example.com/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612234658952.png">
+<meta property="og:image" content="http://example.com/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612234605010.png">
+<meta property="og:image" content="http://example.com/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612234844845.png">
+<meta property="og:image" content="http://example.com/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612235756129.png">
+<meta property="og:image" content="http://example.com/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210613000114381.png">
+<meta property="og:image" content="http://example.com/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210613001027920.png">
+<meta property="article:published_time" content="2021-06-12T14:38:22.000Z">
+<meta property="article:modified_time" content="2021-06-12T16:27:12.093Z">
 <meta property="article:author" content="Duende">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612231900027.png">
   
     <link rel="alternative" href="/atom.xml" title="欢迎来到 Duende 的博客" type="application/atom+xml">
   
@@ -142,16 +153,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-linux总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-linux总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/12/linux%E6%80%BB%E7%BB%93/">linux总结</a>
+    <h1 class="article-title" itemprop="name">
+      linux总结
     </h1>
   
 
@@ -165,9 +174,206 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-        
+<span id="more"></span>
+
+<h3 id="准则-linux中没有错误就是成功"><a href="#准则-linux中没有错误就是成功" class="headerlink" title="准则: linux中没有错误就是成功"></a>准则: linux中没有错误就是成功</h3><h3 id="1-开关机"><a href="#1-开关机" class="headerlink" title="1.开关机"></a>1.开关机</h3><ul>
+<li><p>sync 关机前 将内存中的数据写入磁盘</p>
+</li>
+<li><p>shutdown  -h now 现在强制关机</p>
+</li>
+<li><p>shutdown -h 10  10分钟后关机</p>
+</li>
+<li><p>shutdown -r now 立即重启</p>
+</li>
+<li><p>shutdown -r +10 10分钟后重启</p>
+</li>
+<li><p>reboot 重启 等于shutdown -r now</p>
+</li>
+<li><p>halt 关闭系统  等于 shutdown -h now 和 poweroff</p>
+</li>
+</ul>
+<h3 id="2-查看目录"><a href="#2-查看目录" class="headerlink" title="2.查看目录"></a>2.查看目录</h3><p><font color="red"> <strong>1.一切皆为文件</strong></font></p>
+<p><font color="red"><strong>2.根目录 / ,所有文件都挂载在这个节点下</strong></font></p>
+<ul>
+<li><p><strong>ls /</strong>   </p>
+<p>查看目录下的所有文件</p>
+</li>
+</ul>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210612231900027.png" alt="image-20210612231900027"></p>
+<ul>
+<li>ls: 列出目录</li>
+<li>cd：切换目录</li>
+<li>pwd：显示目前的目录</li>
+<li>mkdir：创建一个新的目录</li>
+<li>rmdir：删除一个空的目录</li>
+<li>cp: 复制文件或目录</li>
+<li>rm: 移除文件或目录</li>
+<li>mv: 移动文件与目录，或修改文件与目录的名称</li>
+<li>你可以使用 <em>man [命令]</em> 来查看各个命令的使用文档，如 ：man cp</li>
+</ul>
+<blockquote>
+<p>ls （列出目录）</p>
+</blockquote>
+<p>在Linux系统当中， ls 命令可能是最常被运行的。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# ls [-aAdfFhilnrRSt] 目录名称</span><br></pre></td></tr></table></figure>
+
+<p>选项与参数：</p>
+<ul>
+<li>-a ：全部的文件，连同隐藏文件( 开头为 . 的文件) 一起列出来(常用)</li>
+<li>-l ：长数据串列出，包含文件的属性与权限等等数据；(常用)</li>
+</ul>
+<p>将目录下的所有文件列出来(含属性与隐藏档)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# ls -al ~</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>cd （切换目录）</p>
+</blockquote>
+<p>cd是Change Directory的缩写，这是用来变换工作目录的命令。</p>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd [相对路径或绝对路径]</span><br></pre></td></tr></table></figure>
+
+<p>测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 切换到用户目录下</span><br><span class="line">[root@kuangshen /]# cd home  </span><br><span class="line"></span><br><span class="line"># 使用 mkdir 命令创建 kuangstudy 目录</span><br><span class="line">[root@kuangshen home]# mkdir kuangstudy</span><br><span class="line"></span><br><span class="line"># 进入 kuangstudy 目录</span><br><span class="line">[root@kuangshen home]# cd kuangstudy</span><br><span class="line"></span><br><span class="line"># 回到上一级</span><br><span class="line">[root@kuangshen kuangstudy]# cd ..</span><br><span class="line"></span><br><span class="line"># 回到根目录</span><br><span class="line">[root@kuangshen kuangstudy]# cd /</span><br><span class="line"></span><br><span class="line"># 表示回到自己的家目录，亦即是 /root 这个目录</span><br><span class="line">[root@kuangshen kuangstudy]# cd ~</span><br></pre></td></tr></table></figure>
+
+<p>接下来大家多操作几次应该就可以很好的理解 cd 命令的。</p>
+<blockquote>
+<p>pwd ( 显示目前所在的目录 )</p>
+</blockquote>
+<p>pwd 是 <strong>Print Working Directory</strong> 的缩写，也就是显示目前所在目录的命令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@kuangshen kuangstudy]#pwd [-P]</span><br></pre></td></tr></table></figure>
+
+<p>选项与参数：**-P** ：显示出确实的路径，而非使用连接(link) 路径。</p>
+<p>测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 单纯显示出目前的工作目录</span><br><span class="line">[root@kuangshen ~]# pwd</span><br><span class="line">/root</span><br><span class="line"></span><br><span class="line"># 如果是链接，要显示真实地址，可以使用 -P参数</span><br><span class="line">[root@kuangshen /]# cd bin</span><br><span class="line">[root@kuangshen bin]# pwd -P</span><br><span class="line">/usr/bin</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>mkdir （创建新目录）</p>
+</blockquote>
+<p>如果想要创建新的目录的话，那么就使用mkdir (make directory)吧。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir [-mp] 目录名称</span><br></pre></td></tr></table></figure>
+
+<p>选项与参数：</p>
+<ul>
+<li>-m ：配置文件的权限喔！直接配置，不需要看默认权限 (umask) 的脸色～</li>
+<li>-p ：帮助你直接将所需要的目录(包含上一级目录)递归创建起来！</li>
+</ul>
+<p>测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"># 进入我们用户目录下</span><br><span class="line">[root@kuangshen /]# cd /home</span><br><span class="line"></span><br><span class="line"># 创建一个 test 文件夹</span><br><span class="line">[root@kuangshen home]# mkdir test</span><br><span class="line"></span><br><span class="line"># 创建多层级目录</span><br><span class="line">[root@kuangshen home]# mkdir test1/test2/test3/test4</span><br><span class="line">mkdir: cannot create directory ‘test1/test2/test3/test4’:</span><br><span class="line">No such file or directory  # &lt;== 没办法直接创建此目录啊！</span><br><span class="line"></span><br><span class="line"># 加了这个 -p 的选项，可以自行帮你创建多层目录！</span><br><span class="line">[root@kuangshen home]# mkdir -p test1/test2/test3/test4</span><br><span class="line"></span><br><span class="line"># 创建权限为 rwx--x--x 的目录。</span><br><span class="line">[root@kuangshen home]# mkdir -m 711 test2</span><br><span class="line">[root@kuangshen home]# ls -l</span><br><span class="line">drwxr-xr-x 2 root root  4096 Mar 12 21:55 test</span><br><span class="line">drwxr-xr-x 3 root root  4096 Mar 12 21:56 test1</span><br><span class="line">drwx--x--x 2 root root  4096 Mar 12 21:58 test2</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>rmdir ( 删除空的目录 )</p>
+</blockquote>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [-p] 目录名称</span><br></pre></td></tr></table></figure>
+
+<p>选项与参数：**-p ：**连同上一级『空的』目录也一起删除</p>
+<p>测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># 看看有多少目录存在？</span><br><span class="line">[root@kuangshen home]# ls -l</span><br><span class="line">drwxr-xr-x 2 root root  4096 Mar 12 21:55 test</span><br><span class="line">drwxr-xr-x 3 root root  4096 Mar 12 21:56 test1</span><br><span class="line">drwx--x--x 2 root root  4096 Mar 12 21:58 test2</span><br><span class="line"></span><br><span class="line"># 可直接删除掉，没问题</span><br><span class="line">[root@kuangshen home]# rmdir test</span><br><span class="line"></span><br><span class="line"># 因为尚有内容，所以无法删除！</span><br><span class="line">[root@kuangshen home]# rmdir test1</span><br><span class="line">rmdir: failed to remove ‘test1’: Directory not empty</span><br><span class="line"></span><br><span class="line"># 利用 -p 这个选项，立刻就可以将 test1/test2/test3/test4 依次删除。</span><br><span class="line">[root@kuangshen home]# rmdir -p test1/test2/test3/test4</span><br></pre></td></tr></table></figure>
+
+<p>注意：这个 rmdir 仅能删除空的目录，你可以使用 rm 命令来删除非空目录，后面我们会将！</p>
+<blockquote>
+<p>cp ( 复制文件或目录 )</p>
+</blockquote>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# cp [-adfilprsu] 来源档(source) 目标档(destination)</span><br><span class="line">[root@www ~]# cp [options] source1 source2 source3 .... directory</span><br></pre></td></tr></table></figure>
+
+<p>选项与参数：</p>
+<ul>
+<li><strong>-a：</strong>相当於 -pdr 的意思，至於 pdr 请参考下列说明；(常用)</li>
+<li><strong>-p：</strong>连同文件的属性一起复制过去，而非使用默认属性(备份常用)；</li>
+<li><strong>-d：</strong>若来源档为连结档的属性(link file)，则复制连结档属性而非文件本身；</li>
+<li><strong>-r：</strong>递归持续复制，用於目录的复制行为；(常用)</li>
+<li><strong>-f：</strong>为强制(force)的意思，若目标文件已经存在且无法开启，则移除后再尝试一次；</li>
+<li><strong>-i：</strong>若目标档(destination)已经存在时，在覆盖时会先询问动作的进行(常用)</li>
+<li><strong>-l：</strong>进行硬式连结(hard link)的连结档创建，而非复制文件本身。</li>
+<li><strong>-s：</strong>复制成为符号连结档 (symbolic link)，亦即『捷径』文件；</li>
+<li><strong>-u：</strong>若 destination 比 source 旧才升级 destination ！</li>
+</ul>
+<p>测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 找一个有文件的目录，我这里找到 root目录</span><br><span class="line">[root@kuangshen home]# cd /root</span><br><span class="line">[root@kuangshen ~]# ls</span><br><span class="line">install.sh</span><br><span class="line">[root@kuangshen ~]# cd /home</span><br><span class="line"></span><br><span class="line"># 复制 root目录下的install.sh 到 home目录下</span><br><span class="line">[root@kuangshen home]# cp /root/install.sh /home</span><br><span class="line">[root@kuangshen home]# ls</span><br><span class="line">install.sh</span><br><span class="line"></span><br><span class="line"># 再次复制，加上-i参数，增加覆盖询问？</span><br><span class="line">[root@kuangshen home]# cp -i /root/install.sh /home</span><br><span class="line">cp: overwrite ‘/home/install.sh’? y # n不覆盖，y为覆盖</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>rm ( 移除文件或目录 )</p>
+</blockquote>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm [-fir] 文件或目录</span><br></pre></td></tr></table></figure>
+
+<p>选项与参数：</p>
+<ul>
+<li>-f ：就是 force 的意思，忽略不存在的文件，不会出现警告信息；</li>
+<li>-i ：互动模式，在删除前会询问使用者是否动作</li>
+<li>-r ：递归删除啊！最常用在目录的删除了！这是非常危险的选项！！！</li>
+</ul>
+<p>测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 将刚刚在 cp 的实例中创建的 install.sh删除掉！</span><br><span class="line">[root@kuangshen home]# rm -i install.sh</span><br><span class="line">rm: remove regular file ‘install.sh’? y</span><br><span class="line"># 如果加上 -i 的选项就会主动询问喔，避免你删除到错误的档名！</span><br><span class="line"></span><br><span class="line"># 尽量不要在服务器上使用 rm -rf /</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>mv  ( 移动文件与目录，或修改名称 )</p>
+</blockquote>
+<p>语法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@www ~]# mv [-fiu] source destination</span><br><span class="line">[root@www ~]# mv [options] source1 source2 source3 .... directory</span><br></pre></td></tr></table></figure>
+
+<p>选项与参数：</p>
+<ul>
+<li>-f ：force 强制的意思，如果目标文件已经存在，不会询问而直接覆盖；</li>
+<li>-i ：若目标文件 (destination) 已经存在时，就会询问是否覆盖！</li>
+<li>-u ：若目标文件已经存在，且 source 比较新，才会升级 (update)</li>
+</ul>
+<p>测试：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 复制一个文件到当前目录</span><br><span class="line">[root@kuangshen home]# cp /root/install.sh /home</span><br><span class="line"></span><br><span class="line"># 创建一个文件夹 test</span><br><span class="line">[root@kuangshen home]# mkdir test</span><br><span class="line"></span><br><span class="line"># 将复制过来的文件移动到我们创建的目录，并查看</span><br><span class="line">[root@kuangshen home]# mv install.sh test</span><br><span class="line">[root@kuangshen home]# ls</span><br><span class="line">test</span><br><span class="line">[root@kuangshen home]# cd test</span><br><span class="line">[root@kuangshen test]# ls</span><br><span class="line">install.sh</span><br><span class="line"></span><br><span class="line"># 将文件夹重命名，然后再次查看！</span><br><span class="line">[root@kuangshen test]# cd ..</span><br><span class="line">[root@kuangshen home]# mv test mvtest</span><br><span class="line">[root@kuangshen home]# ls</span><br><span class="line">mvtest</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210612234658952.png" alt="image-20210612234658952"></p>
+<img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210612234605010.png" alt="image-20210612234605010" style="zoom:25%;">
+
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210612234844845.png" alt="image-20210612234844845"></p>
+<p><strong>chmod  更改文件权限</strong></p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210612235756129.png" alt="image-20210612235756129"></p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210613000114381.png" alt="image-20210613000114381"></p>
+<p><strong>网络配置目录</strong></p>
+<p>cd /etc/sysconfig/network-scripts</p>
+<p><strong>查看网络配置</strong></p>
+<p>cat  / tac  正/反 查看文件内容</p>
+<p>nl  查看行号</p>
+<p>ifconfig</p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210613001027920.png" alt="image-20210613001027920"></p>
+<p>more命令  一页一页显示文件内容 (空格进行翻页, enter代表向下翻一行 :f 行号, </p>
+<p>退出 q命令 , /xxx 向下查找字符串 , ?xxxx 向上查找, n代表继续搜寻下一个, N代表向上查找上一个</p>
+<p>)</p>
+<p>less比more增加了向前翻动页面  使用上下键</p>
+<p>head 只看头几行  head -n 20 xxxx.xx 通过 -n参数来控制行数</p>
+<p>tail 只看尾巴几行</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的支持<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wxcode.jpg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -187,16 +393,24 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/12/linux%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/06/12/git%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -211,237 +425,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/12/git%E6%80%BB%E7%BB%93/">git总结</a>
-    </h1>
-  
-
-        
-        <a href="/2021/06/12/git%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2021-06-12T09:03:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>git一些常用的操作命令~~~</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/12/git%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%88%99-linux%E4%B8%AD%E6%B2%A1%E6%9C%89%E9%94%99%E8%AF%AF%E5%B0%B1%E6%98%AF%E6%88%90%E5%8A%9F"><span class="toc-number">1.</span> <span class="toc-text">准则: linux中没有错误就是成功</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BC%80%E5%85%B3%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">1.开关机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%9F%A5%E7%9C%8B%E7%9B%AE%E5%BD%95"><span class="toc-number">3.</span> <span class="toc-text">2.查看目录</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-关于6月的规划" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/12/%E5%85%B3%E4%BA%8E6%E6%9C%88%E7%9A%84%E8%A7%84%E5%88%92/">关于6月的规划</a>
-    </h1>
   
 
-        
-        <a href="/2021/06/12/%E5%85%B3%E4%BA%8E6%E6%9C%88%E7%9A%84%E8%A7%84%E5%88%92/" class="archive-article-date">
-  	<time datetime="2021-06-12T07:25:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>关于今年6月的一些规划和学习目标~~~~</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">短期规划</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/12/%E5%85%B3%E4%BA%8E6%E6%9C%88%E7%9A%84%E8%A7%84%E5%88%92/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-个人博客的搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/08/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">个人博客的搭建(Hexo)</a>
-    </h1>
   
 
-        
-        <a href="/2021/06/08/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2021-06-08T13:46:00.614Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>简单介绍hexo的安装及基本操作</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">博客搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/08/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
+
   
 
 
@@ -464,8 +473,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
