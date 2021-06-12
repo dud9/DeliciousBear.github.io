@@ -16,14 +16,14 @@
 <meta property="og:description" content="linux 操作大全,哈哈哈哈~">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/ls.png">
-<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612234658952.png">
-<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612234605010.png">
-<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612234844845.png">
-<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210612235756129.png">
-<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210613000114381.png">
-<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/Users/ASUS/AppData/Roaming/Typora/typora-user-images/image-20210613001027920.png">
+<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/dir.png">
+<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/dirmod.png">
+<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/mod.png">
+<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/setmod.png">
+<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/filecheck.png">
+<meta property="og:image" content="http://deliciousbear.github.io/2021/06/12/linux%E6%80%BB%E7%BB%93/nl.png">
 <meta property="article:published_time" content="2021-06-12T14:38:22.000Z">
-<meta property="article:modified_time" content="2021-06-12T17:05:57.420Z">
+<meta property="article:modified_time" content="2021-06-12T17:26:31.551Z">
 <meta property="article:author" content="Duende">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -335,20 +335,20 @@
 
 
 
-<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210612234658952.png" alt="image-20210612234658952"></p>
-<img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210612234605010.png" alt="image-20210612234605010" style="zoom:25%;">
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/dir.png" alt="目录"></p>
+<img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/dirmod.png" alt="image-20210612234605010" style="zoom:25%;">
 
-<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210612234844845.png" alt="image-20210612234844845"></p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/mod.png" alt="权限"></p>
 <p><strong>chmod  更改文件权限</strong></p>
-<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210612235756129.png" alt="image-20210612235756129"></p>
-<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210613000114381.png" alt="image-20210613000114381"></p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/setmod.png" alt="权限设置"></p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/filecheck.png" alt="文件查看"></p>
 <p><strong>网络配置目录</strong></p>
 <p>cd /etc/sysconfig/network-scripts</p>
 <p><strong>查看网络配置</strong></p>
 <p>cat  / tac  正/反 查看文件内容</p>
 <p>nl  查看行号</p>
 <p>ifconfig</p>
-<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210613001027920.png" alt="image-20210613001027920"></p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/nl.png" alt="查看文件内容带行号"></p>
 <p>more命令  一页一页显示文件内容 (空格进行翻页, enter代表向下翻一行 :f 行号, </p>
 <p>退出 q命令 , /xxx 向下查找字符串 , ?xxxx 向上查找, n代表继续搜寻下一个, N代表向上查找上一个</p>
 <p>)</p>
@@ -559,15 +559,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">博客搭建</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">短期规划</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
             
             <div class="clearfix"></div>
