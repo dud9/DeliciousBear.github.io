@@ -186,7 +186,7 @@ linux 操作大全,哈哈哈哈~">
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.9k 字
+      2.4k 字
     </span>
   
 
@@ -196,7 +196,7 @@ linux 操作大全,哈哈哈哈~">
       <i class="iconfont icon-clock-fill"></i>
       
       
-      24
+      29
        分钟
     </span>
   
@@ -233,7 +233,7 @@ linux 操作大全,哈哈哈哈~">
 <p>linux 操作大全,哈哈哈哈~</p>
 <span id="more"></span>
 
-<h3 id="准则-linux中没有错误就是成功"><a href="#准则-linux中没有错误就是成功" class="headerlink" title="准则: linux中没有错误就是成功"></a>准则: linux中没有错误就是成功</h3><h3 id="1-开关机"><a href="#1-开关机" class="headerlink" title="1.开关机"></a>1.开关机</h3><ul>
+<h3 id="准则-linux中没有错误就是成功"><a href="#准则-linux中没有错误就是成功" class="headerlink" title="准则: linux中没有错误就是成功"></a><font color="blue">准则: linux中没有错误就是成功</font></h3><h3 id="1-开关机"><a href="#1-开关机" class="headerlink" title="1.开关机"></a>1.开关机</h3><ul>
 <li><p>sync 关机前 将内存中的数据写入磁盘</p>
 </li>
 <li><p>shutdown  -h now 现在强制关机</p>
@@ -405,7 +405,47 @@ linux 操作大全,哈哈哈哈~">
 <p>less比more增加了向前翻动页面  使用上下键</p>
 <p>head 只看头几行  head -n 20 xxxx.xx 通过 -n参数来控制行数</p>
 <p>tail 只看尾巴几行</p>
-<h2 id="4-硬链接和软连接"><a href="#4-硬链接和软连接" class="headerlink" title="4.硬链接和软连接"></a>4.硬链接和软连接</h2>
+<h2 id="4-硬链接和软连接"><a href="#4-硬链接和软连接" class="headerlink" title="4.硬链接和软连接"></a>4.硬链接和软连接</h2><h3 id="硬链接"><a href="#硬链接" class="headerlink" title="硬链接"></a>硬链接</h3><p>A —&gt; B     B 是A的一个硬链接, A被删除,A仍能访问B的内容, A的内容改变,B的内容也会跟着改变, 允许一个文件拥有多个路径,防止误删~         <font color="red"><strong>硬链接创建的是文件</strong></font></p>
+<h3 id="软连接"><a href="#软连接" class="headerlink" title="软连接"></a>软连接</h3><p>相当于超链接,当源文件被删除后,不能再访问</p>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习"></a>练习</h3><blockquote>
+<p><strong>ln</strong>  创建连接</p>
+</blockquote>
+<ul>
+<li><p>使用  touch 命令创建文件</p>
+<p>例如: 创建一个文件 f1</p>
+<p>touch f1</p>
+</li>
+<li><p>给f1创建一个硬链接f2</p>
+<p>ln f1 f2  (f1,f2内容相同, f1内容改变,f2也会变,f1被删除,f2仍能显示f1的内容)</p>
+</li>
+<li><p>给f1创建一个软连接(类似于超链接)</p>
+<p><font color="red"><strong>f1,f2是实体文件,f3类似于一个超链接,不是文件</strong></font>&gt;</p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/link.png" srcset="/img/loading.gif" lazyload alt="创建连接"></p>
+</li>
+<li><p>给f1源文件输入字符串</p>
+<p>echo “xxx” &gt;&gt;f1</p>
+<p><strong>可以发现f2,f3中都显示了f1中的内容</strong></p>
+</li>
+</ul>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/write.png" srcset="/img/loading.gif" lazyload alt="输入内容"></p>
+<p><strong>尝试删除份f1</strong></p>
+<p>rm -rf f1   (-rf表示递归强制删除)</p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/rmf1.png" srcset="/img/loading.gif" lazyload alt="删除f1"></p>
+<p><font color="red"><strong>由图中可以看出,删除f1后,f3的软连接失效,而f2依旧存在</strong></font></p>
+<p>而输入  cat f3 则报错, 说明软连接失效~~</p>
+<p><font color="red"><strong>因此备份文件可以通过创建硬链接来实现</strong></font></p>
+<h2 id="5-vim编辑器"><a href="#5-vim编辑器" class="headerlink" title="5.vim编辑器"></a>5.vim编辑器</h2><h3 id="三种模式-命令模式-输入模式-底线命令模式"><a href="#三种模式-命令模式-输入模式-底线命令模式" class="headerlink" title="三种模式: 命令模式, 输入模式, 底线命令模式"></a><font color="red">三种模式: 命令模式, 输入模式, 底线命令模式</font></h3><p>vim  xxxx</p>
+<p>进入vim编辑器后,默认是命令模式</p>
+<ul>
+<li><p>输入 <strong>i</strong>,切换到输入模式</p>
+</li>
+<li><p>输入 <strong>x</strong>,删除当前光标所在的字符</p>
+</li>
+<li><p>输入 <strong>:</strong>     , 进入底线命令模式,输入<font color="red"><strong>wq</strong></font>  保存退出. </p>
+<p>​            如果是输入模式要进入底线命令模式进行保存退出, 首先按ESC,退出输入模式,在输入wq. </p>
+</li>
+</ul>
+
             </div>
             <hr>
             <div>
