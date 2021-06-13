@@ -186,7 +186,7 @@ linux 操作大全,哈哈哈哈~">
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.5k 字
+      2.6k 字
     </span>
   
 
@@ -196,7 +196,7 @@ linux 操作大全,哈哈哈哈~">
       <i class="iconfont icon-clock-fill"></i>
       
       
-      30
+      32
        分钟
     </span>
   
@@ -450,10 +450,26 @@ linux 操作大全,哈哈哈哈~">
 <h2 id="6-用户管理"><a href="#6-用户管理" class="headerlink" title="6.用户管理"></a>6.用户管理</h2><h3 id="创建用户"><a href="#创建用户" class="headerlink" title="创建用户"></a>创建用户</h3><p>useradd 选项 用户名</p>
 <p>useradd -m lyc</p>
 <p>-m : 表示自动创建这个用户的主目录,  比如这条语句执行后  会在home 目录下生成  lyc的文件夹,  所有有关lyc的文件都会存放在该目录</p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/params.png" srcset="/img/loading.gif" lazyload alt="参数说明"></p>
 <p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/useradd.png" srcset="/img/loading.gif" lazyload alt="创建用户"></p>
 <p><font color="red"><strong>linux中,一切皆是文件,所以创建用户,就是创建文件来保存用户信息</strong></font></p>
 <p>/etc/passwd中有用户的密码信息</p>
 <p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/passwd.png" srcset="/img/loading.gif" lazyload alt="密码信息"></p>
+<h3 id="删除用户"><a href="#删除用户" class="headerlink" title="删除用户"></a>删除用户</h3><p>userdel -r 用户名</p>
+<p>userdel -r lyc</p>
+<h3 id="修改用户"><a href="#修改用户" class="headerlink" title="修改用户"></a>修改用户</h3><p>usermod</p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/params.png" srcset="/img/loading.gif" lazyload alt="参数说明"></p>
+<p>usermod -d /home/233 lyc</p>
+<p>修改完成后查看配置文件即可</p>
+<h3 id="切换用户"><a href="#切换用户" class="headerlink" title="切换用户"></a>切换用户</h3><h4 id="su-用户名"><a href="#su-用户名" class="headerlink" title="su 用户名"></a>su 用户名</h4><p>切换到lyc用户 :   su lyc </p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/root.png" srcset="/img/loading.gif" lazyload alt="root用户"></p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/others.png" srcset="/img/loading.gif" lazyload alt="其他用户"></p>
+<p>切换完成后,使用 <strong>exit</strong>退回root用户目录</p>
+<h4 id="查看主机名-hostname"><a href="#查看主机名-hostname" class="headerlink" title="查看主机名  hostname"></a>查看主机名  hostname</h4><p>修改主机名为duedne :  hostname duende 修改完成重新连接即可</p>
+<h4 id="修改用户密码"><a href="#修改用户密码" class="headerlink" title="修改用户密码"></a>修改用户密码</h4><p>passwd lyc   —-修改lyc的密码</p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/changepasswd.png" srcset="/img/loading.gif" lazyload alt="修改密码"></p>
+<p>超级用户可以修改任何人的密码</p>
+<p>普通用户只能修改自己的密码</p>
 
             </div>
             <hr>
