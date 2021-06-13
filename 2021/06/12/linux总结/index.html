@@ -196,7 +196,7 @@ linux 操作大全,哈哈哈哈~">
       <i class="iconfont icon-clock-fill"></i>
       
       
-      23
+      24
        分钟
     </span>
   
@@ -249,7 +249,7 @@ linux 操作大全,哈哈哈哈~">
 <li><p>halt 关闭系统  等于 shutdown -h now 和 poweroff</p>
 </li>
 </ul>
-<h3 id="2-查看目录"><a href="#2-查看目录" class="headerlink" title="2.查看目录"></a>2.查看目录</h3><p><font color="red"> <strong>1.一切皆为文件</strong></font></p>
+<h3 id="2-目录相关操作"><a href="#2-目录相关操作" class="headerlink" title="2.目录相关操作"></a>2.目录相关操作</h3><p><font color="red"> <strong>1.一切皆为文件</strong></font></p>
 <p><font color="red"><strong>2.根目录 / ,所有文件都挂载在这个节点下</strong></font></p>
 <ul>
 <li><p><strong>ls /</strong>   </p>
@@ -387,16 +387,15 @@ linux 操作大全,哈哈哈哈~">
 <p>测试：</p>
 <figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs autoit"><span class="hljs-meta"># 复制一个文件到当前目录</span><br>[root<span class="hljs-symbol">@kuangshen</span> home]<span class="hljs-meta"># cp /root/install.sh /home</span><br><br><span class="hljs-meta"># 创建一个文件夹 test</span><br>[root<span class="hljs-symbol">@kuangshen</span> home]<span class="hljs-meta"># mkdir test</span><br><br><span class="hljs-meta"># 将复制过来的文件移动到我们创建的目录，并查看</span><br>[root<span class="hljs-symbol">@kuangshen</span> home]<span class="hljs-meta"># mv install.sh test</span><br>[root<span class="hljs-symbol">@kuangshen</span> home]<span class="hljs-meta"># ls</span><br>test<br>[root<span class="hljs-symbol">@kuangshen</span> home]<span class="hljs-meta"># cd test</span><br>[root<span class="hljs-symbol">@kuangshen</span> test]<span class="hljs-meta"># ls</span><br>install.sh<br><br><span class="hljs-meta"># 将文件夹重命名，然后再次查看！</span><br>[root<span class="hljs-symbol">@kuangshen</span> test]<span class="hljs-meta"># cd ..</span><br>[root<span class="hljs-symbol">@kuangshen</span> home]<span class="hljs-meta"># mv test mvtest</span><br>[root<span class="hljs-symbol">@kuangshen</span> home]<span class="hljs-meta"># ls</span><br>mvtest<br><br><br></code></pre></td></tr></table></figure>
 
-<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/dir.png" srcset="/img/loading.gif" lazyload alt="目录"></p>
+<h2 id="3-文件操作"><a href="#3-文件操作" class="headerlink" title="3.文件操作"></a>3.文件操作</h2><p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/dir.png" srcset="/img/loading.gif" lazyload alt="目录"></p>
 <p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/dirmod.png" srcset="/img/loading.gif" lazyload alt="文件权限"></p>
 <p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/mod.png" srcset="/img/loading.gif" lazyload alt="权限"></p>
-<p><strong>chmod  更改文件权限</strong></p>
-<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/setmod.png" srcset="/img/loading.gif" lazyload alt="权限设置"></p>
+<h4 id="chgrp-R-root-www-将www所在目录及其子文件的所属组改为root-R-表示所在目录及其子文件"><a href="#chgrp-R-root-www-将www所在目录及其子文件的所属组改为root-R-表示所在目录及其子文件" class="headerlink" title="chgrp -R root www    将www所在目录及其子文件的所属组改为root   -R  表示所在目录及其子文件"></a>chgrp -R root www    将www所在目录及其子文件的所属组改为root   -R  表示所在目录及其子文件</h4><h4 id="chown-R-root-www-将www所在目录及其子文件的所有者改为root"><a href="#chown-R-root-www-将www所在目录及其子文件的所有者改为root" class="headerlink" title="chown -R root www   将www所在目录及其子文件的所有者改为root"></a>chown -R root www   将www所在目录及其子文件的所有者改为root</h4><h4 id="chmod-更改文件权限"><a href="#chmod-更改文件权限" class="headerlink" title="chmod  更改文件权限"></a>chmod  更改文件权限</h4><p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/setmod.png" srcset="/img/loading.gif" lazyload alt="权限设置"></p>
 <p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/filecheck.png" srcset="/img/loading.gif" lazyload alt="文件查看"></p>
 <p><strong>网络配置目录</strong></p>
 <p>cd /etc/sysconfig/network-scripts</p>
 <p><strong>查看网络配置</strong></p>
-<p>cat  / tac  正/反 查看文件内容</p>
+<h4 id="查看文件"><a href="#查看文件" class="headerlink" title="查看文件"></a>查看文件</h4><p>cat  / tac  正/反 查看文件内容</p>
 <p>nl  查看行号</p>
 <p>ifconfig</p>
 <p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/nl.png" srcset="/img/loading.gif" lazyload alt="查看文件内容带行号"></p>
@@ -406,7 +405,7 @@ linux 操作大全,哈哈哈哈~">
 <p>less比more增加了向前翻动页面  使用上下键</p>
 <p>head 只看头几行  head -n 20 xxxx.xx 通过 -n参数来控制行数</p>
 <p>tail 只看尾巴几行</p>
-
+<h2 id="4-硬链接和软连接"><a href="#4-硬链接和软连接" class="headerlink" title="4.硬链接和软连接"></a>4.硬链接和软连接</h2>
             </div>
             <hr>
             <div>
