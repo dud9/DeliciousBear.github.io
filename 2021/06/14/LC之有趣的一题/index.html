@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      499 字
+      506 字
     </span>
   
 
@@ -242,7 +242,7 @@
 <ol>
 <li>求天数的时候,需要减去 1971.1.1 这天,总和需要减一</li>
 <li>是否为闰年</li>
-<li>枚举week时, 不同的顺序需要进行偏移!!!</li>
+<li>枚举week时, 不同的顺序需要进行偏移!!!  默认week[0]应该为Friday</li>
 </ol>
 </li>
 </ul>
@@ -253,7 +253,7 @@
 <p><img src="/2021/06/14/LC%E4%B9%8B%E6%9C%89%E8%B6%A3%E7%9A%84%E4%B8%80%E9%A2%98/gongshi.png" srcset="/img/loading.gif" lazyload alt="公式"></p>
 </li>
 <li><p>需要注意的是: <font color="red"><strong>如果月份是一月或者二月, year需要减一, month需要加12</strong></font></p>
-<p>枚举州要从<font color="red"><strong>Saturday</strong></font>开始,否则要进行偏移</p>
+<p>枚举week要从<font color="red"><strong>Saturday</strong></font>开始,否则要进行偏移</p>
 </li>
 <li><p>上代码:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">dayOfTheWeek</span><span class="hljs-params">(<span class="hljs-keyword">int</span> day, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> year)</span> </span>&#123;<br>       <span class="hljs-keyword">if</span> (month &lt;= <span class="hljs-number">2</span>) &#123;<br>           month += <span class="hljs-number">12</span>;<br>           year -= <span class="hljs-number">1</span>;<br>       &#125;<br>       <span class="hljs-keyword">int</span> n = (day + <span class="hljs-number">13</span> * (month + <span class="hljs-number">1</span>) / <span class="hljs-number">5</span> + year + year / <span class="hljs-number">4</span> - year / <span class="hljs-number">100</span> + year / <span class="hljs-number">400</span>) % <span class="hljs-number">7</span>;<br>       String[] week = &#123;<span class="hljs-string">&quot;Saturday&quot;</span>, <span class="hljs-string">&quot;Sunday&quot;</span>, <span class="hljs-string">&quot;Monday&quot;</span>, <span class="hljs-string">&quot;Tuesday&quot;</span>, <span class="hljs-string">&quot;Wednesday&quot;</span>, <span class="hljs-string">&quot;Thursday&quot;</span>, <span class="hljs-string">&quot;Friday&quot;</span>&#125;;<br>       <span class="hljs-keyword">return</span> week[n];<br>   &#125;<br>  <br></code></pre></td></tr></table></figure></li>
