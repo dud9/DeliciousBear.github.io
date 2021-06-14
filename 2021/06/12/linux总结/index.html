@@ -186,7 +186,7 @@ linux 操作大全,哈哈哈哈~">
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      3.3k 字
     </span>
   
 
@@ -196,7 +196,7 @@ linux 操作大全,哈哈哈哈~">
       <i class="iconfont icon-clock-fill"></i>
       
       
-      32
+      39
        分钟
     </span>
   
@@ -452,6 +452,7 @@ linux 操作大全,哈哈哈哈~">
 <p>-m : 表示自动创建这个用户的主目录,  比如这条语句执行后  会在home 目录下生成  lyc的文件夹,  所有有关lyc的文件都会存放在该目录</p>
 <p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/params.png" srcset="/img/loading.gif" lazyload alt="参数说明"></p>
 <p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/useradd.png" srcset="/img/loading.gif" lazyload alt="创建用户"></p>
+<p>-G: 给用户分配组</p>
 <p><font color="red"><strong>linux中,一切皆是文件,所以创建用户,就是创建文件来保存用户信息</strong></font></p>
 <p>/etc/passwd中有用户的密码信息</p>
 <p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/passwd.png" srcset="/img/loading.gif" lazyload alt="密码信息"></p>
@@ -471,6 +472,69 @@ linux 操作大全,哈哈哈哈~">
 <p>超级用户可以修改任何人的密码</p>
 <p>普通用户只能修改自己的密码</p>
 <h4 id="锁定用户"><a href="#锁定用户" class="headerlink" title="锁定用户"></a>锁定用户</h4><p>passwd -l 用户名   锁定后,该用户不能登录</p>
+<h2 id="7-用户组管理"><a href="#7-用户组管理" class="headerlink" title="7. 用户组管理"></a>7. 用户组管理</h2><p>首先回顾一下,修改文件的用户组操作  —-  chgrp -R xxx (修改到哪个用户组)  xxx(需要修改的文件名称)</p>
+<p>用户组涉及用户的增加,删除,修改.</p>
+<p><font color="red"><strong>组的增加,删除和修改实际上就是对/etc/group文件进行更新</strong></font></p>
+<h3 id="创建一个用户组"><a href="#创建一个用户组" class="headerlink" title="创建一个用户组"></a>创建一个用户组</h3><p>groupadd lyc</p>
+<p>cat /etc/group</p>
+<p>创建完成可以去/etc/group文件下查看</p>
+<p><strong>groupadd -g 520 lyc2 指定组的id</strong>     不指定id,id默认会自增</p>
+<h3 id="删除用户组"><a href="#删除用户组" class="headerlink" title="删除用户组"></a>删除用户组</h3><p>groupdel lyc2</p>
+<h3 id="修改用户组的权限-信息和名字"><a href="#修改用户组的权限-信息和名字" class="headerlink" title="修改用户组的权限,信息和名字"></a>修改用户组的权限,信息和名字</h3><p>groupmod -n newName  原组名称  ———更换组名称   </p>
+<p>groupmod -g  newid  原组名称 ———–更换组id </p>
+<h3 id="切换用户组"><a href="#切换用户组" class="headerlink" title="切换用户组"></a>切换用户组</h3><p>newgrp  [新的组名称]</p>
+<h2 id="8-磁盘管理"><a href="#8-磁盘管理" class="headerlink" title="8. 磁盘管理"></a>8. 磁盘管理</h2><h3 id="df命令-列出文件系统整体的磁盘使用量"><a href="#df命令-列出文件系统整体的磁盘使用量" class="headerlink" title="df命令(列出文件系统整体的磁盘使用量)"></a>df命令(列出文件系统整体的磁盘使用量)</h3><ul>
+<li>df</li>
+</ul>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/df.png" srcset="/img/loading.gif" lazyload alt="df"></p>
+<ul>
+<li>df -h   <font color="red"><strong>以M为单位显示</strong></font></li>
+</ul>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/df-h.png" srcset="/img/loading.gif" lazyload alt="df-h"></p>
+<h3 id="du命令-检查磁盘空间使用量"><a href="#du命令-检查磁盘空间使用量" class="headerlink" title="du命令(检查磁盘空间使用量)"></a>du命令(检查磁盘空间使用量)</h3><ul>
+<li><p>du命令</p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/du.png" srcset="/img/loading.gif" lazyload alt="du"></p>
+</li>
+<li><p>du -a 查看包含隐藏文件的使用量</p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/du-a.png" srcset="/img/loading.gif" lazyload alt="du-a"></p>
+</li>
+</ul>
+<p><strong>ls -a</strong>也是如此,可以列出隐藏文件</p>
+<ul>
+<li><p><font color="blue"><strong>检查根目录下所有文件的容量</strong></font></p>
+<p>du -sm /*</p>
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/du-sm.png" srcset="/img/loading.gif" lazyload alt="du -sm /*"></p>
+</li>
+</ul>
+<h3 id="挂载-mount命令-了解"><a href="#挂载-mount命令-了解" class="headerlink" title="挂载: mount命令(了解)"></a>挂载: mount命令(了解)</h3><p>将外部设备挂载到某一个目录下</p>
+<p>mount /dev/lyc1 /mnt/lyc2</p>
+<p>解释: 将外部设备lyc1挂载到lyc2目录下</p>
+<h3 id="卸载-unmount-f命令-了解"><a href="#卸载-unmount-f命令-了解" class="headerlink" title="卸载: unmount -f命令(了解)"></a>卸载: unmount -f命令(了解)</h3><p>unmount -f [挂载位置]</p>
+<h2 id="9-进程管理"><a href="#9-进程管理" class="headerlink" title="9.进程管理"></a>9.进程管理</h2><h3 id="Q-什么是进程"><a href="#Q-什么是进程" class="headerlink" title="Q: 什么是进程?"></a>Q: 什么是进程?</h3><ul>
+<li>在linux中,每一个程序都有一个自己的进程,二=而每一个进程都有一个id号</li>
+<li>每一个进程都有一个父进程</li>
+<li>进程有两种存在方式: 前台  || 后台   运行</li>
+<li>一般来说,服务都是后台运行,基本的程序都是前台运行</li>
+</ul>
+<h3 id="PS命令"><a href="#PS命令" class="headerlink" title="PS命令"></a>PS命令</h3><p><font color="blue" size="5"><strong>查看当前系统中正在执行的各种进程信息</strong></font></p>
+<h4 id="参数"><a href="#参数" class="headerlink" title="参数:"></a>参数:</h4><ul>
+<li>-a   显示当前终端运行的所有的进程信息</li>
+<li>-u   以用户的信息显示进程</li>
+<li>-x   显示后台运行的进程参数      </li>
+</ul>
+<p><font color="red"><strong>在linux中  |  表示管道符</strong></font></p>
+<p><font color="red"><strong>grep 表示查找文件中符合条件的字符串</strong></font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 查看所有的进程</span><br>ps -aux|grep<br><span class="hljs-comment"># 这条命令很常用</span><br><br><span class="hljs-comment"># 比如查看mysql相关的所有进程</span><br>ps -aux|grep mysql<br>ps -aux|grep java<br></code></pre></td></tr></table></figure>
+
+<p><font color="red"><strong>目前只需要记住 ps -xx|grep 进程名字</strong></font></p>
+<p><font color="red"><strong>ps -ef|grep 可以通过此命令查看父进程信息</strong></font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps -ef|grep mysql<br></code></pre></td></tr></table></figure>
+
+<p><font color="red"><strong>也可以通过目录树结构来查看</strong></font></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">pstree -pu<br>	-p 显示父id<br>	-u 显示用户组<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2021/06/12/linux%E6%80%BB%E7%BB%93/pstree.png" srcset="/img/loading.gif" lazyload alt="pstree"></p>
+<h3 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h3><h4 id="kill-9-进程id"><a href="#kill-9-进程id" class="headerlink" title="kill -9   [进程id]"></a>kill -9   [进程id]</h4><p>例如: kill  -9  99312     表示杀死进程号为99312的进程</p>
 
             </div>
             <hr>
