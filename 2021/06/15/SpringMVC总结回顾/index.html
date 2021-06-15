@@ -15,11 +15,11 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="description" content="
-魔法之Rust：蔡勒公式  哈哈哈哈">
+主要总结和回顾之前学习的SpringMVC,捡起以前的东西,温故而知新~~~">
   <meta name="author" content="Duende">
   <meta name="keywords" content="">
   
-  <title>LC之有趣的一题 - 欢迎来到 Duende 的博客</title>
+  <title>SpringMVC总结回顾 - 欢迎来到 Duende 的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -164,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="LC之有趣的一题">
+            <span class="h2" id="subtitle" title="SpringMVC总结回顾">
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-06-14 17:28" pubdate>
-        2021年6月14日 下午
+      <time datetime="2021-06-15 18:40" pubdate>
+        2021年6月15日 晚上
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      506 字
+      869 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      9
        分钟
     </span>
   
@@ -226,40 +226,61 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">LC之有趣的一题</h1>
+            <h1 style="display: none">SpringMVC总结回顾</h1>
             
             <div class="markdown-body">
               <hr>
-<p>魔法之Rust：蔡勒公式  哈哈哈哈</p>
+<p>主要总结和回顾之前学习的SpringMVC,捡起以前的东西,温故而知新~~~</p>
 <span id="more"></span>
 
-<h2 id="one-常规思路"><a href="#one-常规思路" class="headerlink" title="one. 常规思路"></a>one. 常规思路</h2><ul>
-<li><p>我们知道1971年1月1日为周五, 那么我们可以它作为基点, 求出所求的时间到它的距离,在和7取模,就是答案</p>
+<h3 id="首先什么是MVC"><a href="#首先什么是MVC" class="headerlink" title="首先什么是MVC"></a>首先什么是MVC</h3><p><strong>M</strong>: 即model, 模型层,  主要是数据</p>
+<p>V:  即View,  视图层, 页面视图</p>
+<p>C: 即Controller, 控制层, 处理前端的请求</p>
+<h2 id="MVC的工作流程"><a href="#MVC的工作流程" class="headerlink" title="MVC的工作流程"></a>MVC的工作流程</h2><h3 id="One-请求的分发"><a href="#One-请求的分发" class="headerlink" title="One.  请求的分发"></a>One.  请求的分发</h3><ul>
+<li><p>前端浏览器发来的请求, 会到DispatcherServlet这里进行统一的分发处理</p>
 </li>
-<li><p>上代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">dayOfTheWeek</span><span class="hljs-params">(<span class="hljs-keyword">int</span> day, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> year)</span> </span>&#123;<br>    <span class="hljs-comment">// 首先枚举出每个月的天数, 先忽略闰年</span><br>        <span class="hljs-keyword">int</span>[] mons = &#123;<span class="hljs-number">31</span>, <span class="hljs-number">28</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>, <span class="hljs-number">30</span>, <span class="hljs-number">31</span>&#125;;<br>        <span class="hljs-keyword">int</span>[] sum = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">13</span>];<br>    <span class="hljs-comment">// 求出前缀和</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">12</span>; i++) sum[i] = sum[i - <span class="hljs-number">1</span>] + mons[i - <span class="hljs-number">1</span>];<br>    <span class="hljs-comment">// 需要减去1971年1月1日这天</span><br>        <span class="hljs-keyword">int</span> days = (year - <span class="hljs-number">1971</span>) * <span class="hljs-number">365</span> + sum[month - <span class="hljs-number">1</span>] + day - <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// 看是否为闰年</span><br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1971</span>; i &lt;= year; i++) &#123;<br>            <span class="hljs-keyword">if</span> ((i % <span class="hljs-number">4</span> == <span class="hljs-number">0</span> &amp;&amp; i % <span class="hljs-number">100</span> != <span class="hljs-number">0</span>) || i % <span class="hljs-number">400</span> == <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-comment">// 如果所求的年份不超过2月,则不受闰年的影响</span><br>                <span class="hljs-keyword">if</span> (i &lt; year || (year == i &amp;&amp; month &gt; <span class="hljs-number">2</span>)) &#123;<br>                    days ++;<br>                &#125;<br>            &#125;<br>        &#125;<br>        String[] week = &#123;<span class="hljs-string">&quot;Saturday&quot;</span>, <span class="hljs-string">&quot;Sunday&quot;</span>, <span class="hljs-string">&quot;Monday&quot;</span>, <span class="hljs-string">&quot;Tuesday&quot;</span>, <span class="hljs-string">&quot;Wednesday&quot;</span>, <span class="hljs-string">&quot;Thursday&quot;</span>, <span class="hljs-string">&quot;Friday&quot;</span>&#125;;<br>    <span class="hljs-comment">// 需要向右偏移6个单位, 因为是以星期五为基点, 但枚举的week是按照西方的习惯枚举的,所有需要进行偏移</span><br>        <span class="hljs-keyword">int</span> idx = (<span class="hljs-number">6</span> + days) % <span class="hljs-number">7</span>;<br>        <span class="hljs-keyword">return</span> week[idx];<br>    &#125;<br></code></pre></td></tr></table></figure></li>
-<li><p>总的来说,还是比较简单的,但是还是有许多细节,细节很重要</p>
-<ol>
-<li>求天数的时候,需要减去 1971.1.1 这天,总和需要减一</li>
-<li>是否为闰年</li>
-<li>枚举week时, 不同的顺序需要进行偏移!!!  默认week[0]应该为Friday</li>
-</ol>
+<li><p>它会遍历所有的HandlerMappings(处理器映射关系),这里的Handler就是Controller中的一个个方法,</p>
+<p>每一个方法就是一个Handler</p>
+</li>
+<li><p>找到能够处理这个请求的Handler和所有的拦截器</p>
+</li>
+<li><p>执行拦截器的PreHandle方法,对请求进行过滤</p>
+</li>
+<li><p>接着生成Handler的Adapter适配器</p>
+</li>
+<li><p>由适配器去执行目标方法</p>
 </li>
 </ul>
-<h2 id="公式法"><a href="#公式法" class="headerlink" title="公式法"></a>公式法</h2><ul>
-<li><p>前人总结出了公式,所以可以直接套用</p>
+<h3 id="Two-目标方法的执行"><a href="#Two-目标方法的执行" class="headerlink" title="Two. 目标方法的执行"></a>Two. 目标方法的执行</h3><h4 id="1-解析参数"><a href="#1-解析参数" class="headerlink" title="1.解析参数"></a>1.解析参数</h4><p>顾名思义,要执行目标方法,首先得获得方法的参数.</p>
+<ul>
+<li><p>对于每一个参数,都会遍历所有的参数解析器,找到能够处理这种类型的参数解析器,调用Converter,将String转成需要的类型</p>
 </li>
-<li><p>公式如下:</p>
-<p><img src="/2021/06/14/LC%E4%B9%8B%E6%9C%89%E8%B6%A3%E7%9A%84%E4%B8%80%E9%A2%98/gongshi.png" srcset="/img/loading.gif" lazyload alt="公式"></p>
+<li><p>对于自定义类型的参数, 也有专门的解析器,<strong>ServletModelAttributeMethodProcessor</strong> </p>
+<p><strong>WebDataBinder binder = binderFactory.createBinder(webRequest, attribute, name);</strong></p>
+<p><strong>WebDataBinder :web数据绑定器，将请求参数的值绑定到指定的JavaBean里面</strong></p>
+<p><strong>WebDataBinder 利用它里面的 Converters 将请求数据转成指定的数据类型。再次封装到JavaBean中</strong></p>
+<p><strong>GenericConversionService：在设置每一个值的时候，找它里面的所有converter那个可以将这个数据类型（request带来参数的字符串）转换到指定的类型（JavaBean – Integer）</strong></p>
+<p><strong>byte – &gt; file</strong></p>
 </li>
-<li><p>需要注意的是: <font color="red"><strong>如果月份是一月或者二月, year需要减一, month需要加12</strong></font></p>
-<p>枚举week要从<font color="red"><strong>Saturday</strong></font>开始,否则要进行偏移</p>
-</li>
-<li><p>上代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">dayOfTheWeek</span><span class="hljs-params">(<span class="hljs-keyword">int</span> day, <span class="hljs-keyword">int</span> month, <span class="hljs-keyword">int</span> year)</span> </span>&#123;<br>       <span class="hljs-keyword">if</span> (month &lt;= <span class="hljs-number">2</span>) &#123;<br>           month += <span class="hljs-number">12</span>;<br>           year -= <span class="hljs-number">1</span>;<br>       &#125;<br>       <span class="hljs-keyword">int</span> n = (day + <span class="hljs-number">13</span> * (month + <span class="hljs-number">1</span>) / <span class="hljs-number">5</span> + year + year / <span class="hljs-number">4</span> - year / <span class="hljs-number">100</span> + year / <span class="hljs-number">400</span>) % <span class="hljs-number">7</span>;<br>       String[] week = &#123;<span class="hljs-string">&quot;Saturday&quot;</span>, <span class="hljs-string">&quot;Sunday&quot;</span>, <span class="hljs-string">&quot;Monday&quot;</span>, <span class="hljs-string">&quot;Tuesday&quot;</span>, <span class="hljs-string">&quot;Wednesday&quot;</span>, <span class="hljs-string">&quot;Thursday&quot;</span>, <span class="hljs-string">&quot;Friday&quot;</span>&#125;;<br>       <span class="hljs-keyword">return</span> week[n];<br>   &#125;<br>  <br></code></pre></td></tr></table></figure></li>
-<li><p>哈哈哈不愧是魔法呀~</p>
-<p><img src="/2021/06/14/LC%E4%B9%8B%E6%9C%89%E8%B6%A3%E7%9A%84%E4%B8%80%E9%A2%98/mofa.png" srcset="/img/loading.gif" lazyload alt="魔法"></p>
-</li>
+</ul>
+<h4 id="2-执行目标方法-获得返回值"><a href="#2-执行目标方法-获得返回值" class="headerlink" title="2. 执行目标方法,获得返回值"></a>2. 执行目标方法,获得返回值</h4><p>所有的数据会被放在ModelAndView这个对象中,如果返回页面,也会保存页面的地址值</p>
+<h3 id="Three-返回值的处理"><a href="#Three-返回值的处理" class="headerlink" title="Three. 返回值的处理"></a>Three. 返回值的处理</h3><h4 id="1-返回值处理器"><a href="#1-返回值处理器" class="headerlink" title="1. 返回值处理器"></a>1. 返回值处理器</h4><p>遍历所有的返回值处理器,找到能够处理相应数据类型的返回值处理器</p>
+<h4 id="2-数据响应-响应数据-和-响应页面"><a href="#2-数据响应-响应数据-和-响应页面" class="headerlink" title="2.数据响应 (响应数据 和 响应页面)"></a>2.数据响应 (响应数据 和 响应页面)</h4><p><img src="/2021/06/15/SpringMVC%E6%80%BB%E7%BB%93%E5%9B%9E%E9%A1%BE/mvc.png" srcset="/img/loading.gif" lazyload alt="mvc"></p>
+<p><font color="red"><strong>内容协商</strong></font></p>
+<p>确定数据以什么形式传给浏览器</p>
+<p>过程:</p>
+<h5 id="1-确定浏览器接受什么样的媒体类型"><a href="#1-确定浏览器接受什么样的媒体类型" class="headerlink" title="1.确定浏览器接受什么样的媒体类型"></a>1.确定浏览器接受什么样的媒体类型</h5><p>基于浏览器参数方式的内容协商方式和基于请求头的内容协商方式</p>
+<p>以基于请求头的内容协商方式为例,浏览器会将其所能接受的类型以请求头的方式传给服务器,服务器将其取出,放入集合A中</p>
+<h5 id="2-确定服务器能够生产的所有媒体类型"><a href="#2-确定服务器能够生产的所有媒体类型" class="headerlink" title="2.确定服务器能够生产的所有媒体类型"></a>2.确定服务器能够生产的所有媒体类型</h5><p><strong>MessageConverter</strong> 主要包含5个方法</p>
+<p>CanRead() canWrite() read() write() 还有支持转换的媒体类型</p>
+<p>遍历所有的MessageConverters,找出所有能够支持处理该种返回值类型的所有MessageConverter所能处理的所有媒体类型,把他们放在集合B中</p>
+<h5 id="3-最佳匹配"><a href="#3-最佳匹配" class="headerlink" title="3.最佳匹配"></a>3.最佳匹配</h5><p>将集合A与集合B做一个最佳匹配,确定一个返回的媒体类型</p>
+<h5 id="4-再次遍历"><a href="#4-再次遍历" class="headerlink" title="4. 再次遍历"></a>4. 再次遍历</h5><p>再次遍历所有的MessageConverters,找出所有能够将返回值类型转换成确定的这种媒体类型的MessageConverter,调用它将数据转换成需要的媒体类型.</p>
+<h4 id="3-响应页面"><a href="#3-响应页面" class="headerlink" title="3. 响应页面"></a>3. 响应页面</h4><ul>
+<li>首先还是遍历所有的返回值处理器,找到能够处理页面的返回值处理器</li>
+<li>利用视图解析器将ModelAndView中的view视图地址解析出来</li>
+<li>调用Render函数将model中的数据渲染到页面中</li>
+<li>返回页面</li>
 </ul>
 
             </div>
@@ -271,7 +292,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/LC-1185-%E4%B8%80%E5%91%A8%E4%B8%AD%E7%9A%84%E7%AC%AC%E5%87%A0%E5%A4%A9/">LC-1185. 一周中的第几天</a>
+                      <a class="hover-with-bg" href="/tags/SpringMVC/">SpringMVC</a>
                     
                   </div>
                 
@@ -288,18 +309,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/06/14/linux%E4%B9%8BJDK%E5%AE%89%E8%A3%85/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">linux之JDK安装</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/06/12/linux%E6%80%BB%E7%BB%93/">
-                        <span class="hidden-mobile">linux总结</span>
+                      <a href="/2021/06/14/linux%E4%B9%8BJDK%E5%AE%89%E8%A3%85/">
+                        <span class="hidden-mobile">linux之JDK安装</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
