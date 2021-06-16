@@ -14,11 +14,12 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="总的来说还是基础不扎实,还是得先好好巩固java基础
+">
   <meta name="author" content="Duende">
   <meta name="keywords" content="">
   
-  <title>linux之JDK安装 - 欢迎来到 Duende 的博客</title>
+  <title>面试总结-Day0616 - 欢迎来到 Duende 的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="linux之JDK安装">
+            <span class="h2" id="subtitle" title="面试总结-Day0616">
               
             </span>
 
@@ -173,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-06-14 22:19" pubdate>
-        2021年6月14日 晚上
+      <time datetime="2021-06-16 21:50" pubdate>
+        2021年6月16日 晚上
       </time>
     </span>
   
@@ -185,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      545 字
     </span>
   
 
@@ -195,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      6
        分钟
     </span>
   
@@ -225,12 +226,79 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">linux之JDK安装</h1>
+            <h1 style="display: none">面试总结-Day0616</h1>
             
             <div class="markdown-body">
-              <hr>
+              <p>总的来说还是基础不扎实,还是得先好好巩固java基础</p>
+<hr>
 <span id="more"></span>
 
+<p>题目:</p>
+<ul>
+<li>@bean 和 @component 两个注解的区别</li>
+<li>java 动态代理</li>
+<li>MySQL 索引</li>
+<li>java原生注解</li>
+<li>http报文包含哪些内容</li>
+<li>Mybatis 怎么保存枚举类</li>
+<li>Threadlocal</li>
+<li>Servlet</li>
+</ul>
+<h3 id="Bean-和-Component"><a href="#Bean-和-Component" class="headerlink" title="@Bean 和 @Component"></a>@Bean 和 @Component</h3><p>相同: 两者都是为容器中添加组件</p>
+<p>而不同的是, Component是系统在组件扫描时自动配置的,而bean注解可以由我们自己进行精准的配置,各个属性.</p>
+<h3 id="Http报文有哪些内容"><a href="#Http报文有哪些内容" class="headerlink" title="Http报文有哪些内容"></a>Http报文有哪些内容</h3><p><img src="http%E6%8A%A5%E6%96%87.png" srcset="/img/loading.gif" lazyload alt="http报文"></p>
+<h3 id="java注解"><a href="#java注解" class="headerlink" title="java注解"></a>java注解</h3><p>Java 定义了一套注解，共有 7 个，3 个在 java.lang 中，剩下 4 个在 java.lang.annotation 中。</p>
+<ul>
+<li><p>元注解:  可以对注解进行注解</p>
+<h4 id="Documented"><a href="#Documented" class="headerlink" title="@Documented :"></a>@Documented :</h4><p>被@Documented 标注的注解 会被写到javadoc中</p>
+<h4 id="Retention"><a href="#Retention" class="headerlink" title="@Retention"></a>@Retention</h4><p>描述注解的生命周期</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> <span class="hljs-title">RetentionPolicy</span> </span>&#123;<br><br>    SOURCE,    <span class="hljs-comment">// 源文件保留</span><br>    CLASS,       <span class="hljs-comment">// 编译期保留，默认值</span><br>    RUNTIME   <span class="hljs-comment">// 运行期保留，可通过反射去获取注解信息</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="Target"><a href="#Target" class="headerlink" title="@Target"></a>@Target</h4><p>​    描述注解的作用域</p>
+<p>​    例如:</p>
+<p>​    <img src="/2021/06/16/%E9%9D%A2%E8%AF%95%E6%80%BB%E7%BB%93-Day0616/override.png" srcset="/img/loading.gif" lazyload alt="Override"></p>
+<p>Override 注解的作用域是方法,只能在方法上标注Override</p>
+<p>public enum ElementType {</p>
+<pre><code>TYPE, // 类、接口、枚举类
+ 
+FIELD, // 成员变量（包括：枚举常量）
+ 
+METHOD, // 成员方法
+ 
+PARAMETER, // 方法参数
+ 
+CONSTRUCTOR, // 构造方法
+ 
+LOCAL_VARIABLE, // 局部变量
+ 
+ANNOTATION_TYPE, // 注解类
+ 
+PACKAGE, // 可用于修饰：包
+ 
+TYPE_PARAMETER, // 类型参数，JDK 1.8 新增
+ 
+TYPE_USE // 使用类型的任何地方，JDK 1.8 新增
+
+&#125;
+</code></pre>
+<h4 id="Inherited"><a href="#Inherited" class="headerlink" title="@Inherited"></a>@Inherited</h4><p>被@Inherited标注的注解具有继承性</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>作用在代码的注解是</strong></p>
+<ul>
+<li>@Override - 检查该方法是否是重写方法。如果发现其父类，或者是引用的接口中并没有该方法时，会报编译错误。</li>
+<li>@Deprecated - 标记过时方法。如果使用该方法，会报编译警告。</li>
+<li>@SuppressWarnings - 指示编译器去忽略注解中声明的警告。</li>
+</ul>
+</li>
+<li><p>当然也可以自定义注解</p>
+</li>
+</ul>
+<p><font color="red"><strong>注解的作用: 使用注解可以更好地解释程序,例如有很多方法需要测试,需要分周期完成,我可以自定义一个@Finish注解来标记已经测试完成的内容</strong></font></p>
+<h3 id="Mybatis-怎么简化枚举类的存取"><a href="#Mybatis-怎么简化枚举类的存取" class="headerlink" title="Mybatis 怎么简化枚举类的存取"></a>Mybatis 怎么简化枚举类的存取</h3><p>Mybatis提供有typehandler</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_34162695/article/details/88923919">https://blog.csdn.net/weixin_34162695/article/details/88923919</a></p>
+<h3 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h3><p><a target="_blank" rel="noopener" href="https://aobing.blog.csdn.net/article/details/116431270">https://aobing.blog.csdn.net/article/details/116431270</a></p>
 
             </div>
             <hr>
@@ -241,7 +309,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/rpm%E5%AE%89%E8%A3%85jdk-%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/">rpm安装jdk,配置环境变量</a>
+                      <a class="hover-with-bg" href="/tags/%E9%9D%A2%E8%AF%95/">面试</a>
                     
                   </div>
                 
@@ -258,18 +326,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/06/15/SpringMVC%E6%80%BB%E7%BB%93%E5%9B%9E%E9%A1%BE/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">SpringMVC总结回顾</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/06/14/LC%E4%B9%8B%E6%9C%89%E8%B6%A3%E7%9A%84%E4%B8%80%E9%A2%98/">
-                        <span class="hidden-mobile">LC之有趣的一题</span>
+                      <a href="/2021/06/15/SpringMVC%E6%80%BB%E7%BB%93%E5%9B%9E%E9%A1%BE/">
+                        <span class="hidden-mobile">SpringMVC总结回顾</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
