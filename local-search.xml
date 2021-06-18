@@ -138,8 +138,8 @@
   
   <entry>
     <title>个人博客的搭建(Hexo)</title>
-    <link href="/2021/06/08/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
-    <url>/2021/06/08/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
+    <link href="/2018/06/19/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/"/>
+    <url>/2018/06/19/%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%90%AD%E5%BB%BA/</url>
     
     <content type="html"><![CDATA[<p>简单介绍hexo的安装及基本操作</p><span id="more"></span><h2 id="Step-one-安装"><a href="#Step-one-安装" class="headerlink" title="Step one. 安装"></a>Step one. 安装</h2><p>1.首先安装hexo   cnpm install -g hexo-cli  (node.js)</p><p>2.mkdir blog  创建文件夹</p><p>3.执行hexo init </p><p>4.启动博客 hexo s (hexo start)</p><hr><h2 id="Step-two-新建文章"><a href="#Step-two-新建文章" class="headerlink" title="Step two. 新建文章"></a>Step two. 新建文章</h2><p>使用  hexo new “xxx” 命令</p><p>写完文章后</p><p>hexo clean  </p><p>hexo g –生成</p>]]></content>
     
