@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      381 字
+      563 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5
+      8
        分钟
     </span>
   
@@ -249,14 +249,28 @@
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;<br><span class="hljs-comment">//        Thread t = new Thread(new Test02());</span><br><span class="hljs-comment">//        t.start();</span><br>        <br>        <span class="hljs-keyword">new</span> Thread(() -&gt; &#123;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) &#123;<br>                System.out.println(i);<br>            &#125;<br>        &#125;).start();<br>    &#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="3-实现Callable接口"><a href="#3-实现Callable接口" class="headerlink" title="3. 实现Callable接口"></a>3. 实现Callable接口</h3><h3 id="4-本质"><a href="#4-本质" class="headerlink" title="4. 本质"></a>4. 本质</h3><p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/thread.png" srcset="/img/loading.gif" lazyload alt="thread"></p>
+<h3 id="3-实现Callable接口"><a href="#3-实现Callable接口" class="headerlink" title="3. 实现Callable接口"></a>3. 实现Callable接口</h3><p><font color="red"><strong>可以获得返回值</strong></font></p>
+<p>需要搭配 future 来使用</p>
+<p>实现 callable接口 重写 call() 方法 配合 线程池的submit方法()</p>
+<p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/callable.png" srcset="/img/loading.gif" lazyload alt="Callable"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.util.concurrent.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> liu yicheng</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@date</span> 2021/6/18 - 20:27</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Test03</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">Callable</span>&lt;<span class="hljs-title">String</span>&gt; </span>&#123;<br>    String name;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Test03</span><span class="hljs-params">(String name)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.name = name;<br>    &#125;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">call</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>&#123;<br>        <span class="hljs-keyword">return</span> name;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ExecutionException, InterruptedException </span>&#123;<br>        Test03 t = <span class="hljs-keyword">new</span> Test03(<span class="hljs-string">&quot;Thread-01&quot;</span>);<br>        ExecutorService e = Executors.newFixedThreadPool(<span class="hljs-number">3</span>);<br><br>        Future&lt;String&gt; future = e.submit(t);<br>		<span class="hljs-comment">// 使用 lamda 表达式</span><br>        Future&lt;String&gt; future1 = e.submit(() -&gt; Thread.currentThread().getName());<br><br>        String s = future.get();<br>        System.out.println(s);<br>        e.shutdown();<br>    &#125;<br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="4-本质"><a href="#4-本质" class="headerlink" title="4. 本质"></a>4. 本质</h3><p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/thread.png" srcset="/img/loading.gif" lazyload alt="thread"></p>
 <p><font color="red"><strong>Thread 类继承了 Runnable接口</strong></font></p>
 <p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/runnable.png" srcset="/img/loading.gif" lazyload alt="runnable.png"></p>
 <p><strong>线程执行都是运行Runnable 中的 Run()方法,而线程要执行得先进入就绪态,等待获取cpu使用权,也就是执行Thread类中的start()方法</strong></p>
 <p>方法一的本质就是调用start方法,而新生成的类继承了Thread类,也就继承了start()方法,执行start后就入就绪态,获得cpu后,执行run方法;</p>
 <p>方法二,虽然实现了runnable接口,但是执行run方法,要进入就绪态,就必须调用Thread类的start方法,所以new 了一个Thread对象,</p>
 <p>Thread的构造方法可以传入一个Runnable接口,执行完start方法后,会执行传入runnable接口的run方法</p>
-<h1 id="二-进阶"><a href="#二-进阶" class="headerlink" title="二.  进阶"></a>二.  进阶</h1>
+<h1 id="二-进阶"><a href="#二-进阶" class="headerlink" title="二.  进阶"></a>二.  进阶</h1><h3 id="1-三种线程池"><a href="#1-三种线程池" class="headerlink" title="1. 三种线程池"></a>1. 三种线程池</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 固定个数的线程池</span><br>ExecutorService e = Executors.newFixedThreadPool(<span class="hljs-number">5</span>);<br><span class="hljs-comment">// 延迟执行线程池</span><br>      ExecutorService e1 = Executors.newScheduledThreadPool(<span class="hljs-number">5</span>);<br><span class="hljs-comment">// 可以缓存的线程池</span><br>      ExecutorService e2 = Executors.newCachedThreadPool();<br></code></pre></td></tr></table></figure>
+
+
+
+
             </div>
             <hr>
             <div>
