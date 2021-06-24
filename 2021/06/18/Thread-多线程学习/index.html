@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      601 字
+      1.7k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      20
        分钟
     </span>
   
@@ -274,11 +274,42 @@
 <p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/5%E4%B8%AA%E7%8A%B6%E6%80%81(2).png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="3-线程的主要方法"><a href="#3-线程的主要方法" class="headerlink" title="3. 线程的主要方法"></a>3. 线程的主要方法</h3><p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/method.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="1-Sleep"><a href="#1-Sleep" class="headerlink" title="(1) Sleep"></a>(1) Sleep</h4><p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/sleep.png" srcset="/img/loading.gif" lazyload></p>
+<p><font color="red"><strong>Sleep 与 wait 的区别就是 sleep 不会释放锁. 而wait会</strong></font></p>
 <h4 id="2-yield"><a href="#2-yield" class="headerlink" title="(2) yield"></a>(2) yield</h4><p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/yield.png" srcset="/img/loading.gif" lazyload></p>
 <h4 id="3-Join"><a href="#3-Join" class="headerlink" title="(3) Join"></a>(3) Join</h4><p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/join.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="4-线程优先级"><a href="#4-线程优先级" class="headerlink" title="4. 线程优先级"></a>4. 线程优先级</h3><p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/priority.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="5-守护线程"><a href="#5-守护线程" class="headerlink" title="5. 守护线程"></a>5. 守护线程</h3><p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/daemon.png" srcset="/img/loading.gif" lazyload></p>
+<p><font color="red"><strong>线程分为 用户线程 和 守护线程</strong></font></p>
+<p><strong>虚拟机需要等待用户线程全部执行结束,才会停止运行</strong></p>
+<p><strong>当用户线程执行完毕后, 虚拟机就会停止,而不会等待守护线程执行完毕</strong></p>
 <h3 id="6-线程同步"><a href="#6-线程同步" class="headerlink" title="6.线程同步"></a>6.线程同步</h3><p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/syn.png" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li><p>同步方法</p>
+<p>默认上锁的对象为this  </p>
+</li>
+<li><p>同步代码块</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"><span class="hljs-comment">// list 为需要上锁的对象</span><br>synchronized (<span class="hljs-built_in">list</span>) &#123;<br>    <span class="hljs-keyword">new</span> <span class="hljs-constructor">Thread(()</span> -&gt; <span class="hljs-built_in">list</span>.add(<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Thread</span>.</span></span>current<span class="hljs-constructor">Thread()</span>.get<span class="hljs-constructor">Name()</span>)).start<span class="hljs-literal">()</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="7-线程死锁"><a href="#7-线程死锁" class="headerlink" title="7. 线程死锁"></a>7. 线程死锁</h3><p>死锁就是多个线程相互占有对方需要的资源,需要对方占有的资源,却占有对方需要的资源,形成闭环</p>
+<p><img src="/2021/06/18/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%AD%BB%E9%94%81%E7%9A%84%E5%9B%9B%E4%B8%AA%E6%9D%A1%E4%BB%B6.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="8-锁-Lock"><a href="#8-锁-Lock" class="headerlink" title="8.锁 Lock"></a>8.锁 Lock</h3><h4 id="1-可重入锁-ReentrantLock"><a href="#1-可重入锁-ReentrantLock" class="headerlink" title="(1) 可重入锁 ReentrantLock"></a>(1) 可重入锁 ReentrantLock</h4><p><font color="red"><strong>某个线程已经获得某个锁，可以再次获取锁而不会出现死锁</strong></font></p>
+<p><strong>允许同一个线程多次获取同一把锁</strong></p>
+<p><font color="red"><strong>ReentrantLock</strong></font> <strong>和</strong> <font color="red"><strong>synchronized</strong></font> <strong>都是可重入锁</strong></p>
+<h4 id="2-乐观锁和悲观锁"><a href="#2-乐观锁和悲观锁" class="headerlink" title="(2) 乐观锁和悲观锁"></a>(2) 乐观锁和悲观锁</h4><p>锁的一种宏观分类方式是<strong>悲观锁</strong>和<strong>乐观锁</strong>。悲观锁与乐观锁<strong>并不是特指某个锁</strong>（Java中没有哪个Lock实现类就叫PessimisticLock或OptimisticLock），而是在并发情况下的两种不同策略。</p>
+<p>悲观锁（Pessimistic Lock）, 就是很悲观，每次去拿数据的时候都认为别人会修改。所以每次在拿数据的时候都会上锁。这样别人想拿数据就被挡住，直到悲观锁被释放。</p>
+<p>乐观锁（Optimistic Lock）, 就是很乐观，每次去拿数据的时候都认为别人不会修改。所以<strong>不会上锁，不会上锁！</strong>但是如果想要更新数据，则会在<strong>更新前检查在读取至更新这段时间别人有没有修改过这个数据</strong>。如果修改过，则重新读取，再次尝试更新，循环上述步骤直到更新成功（当然也允许更新失败的线程放弃操作）。</p>
+<p><strong>悲观锁阻塞事务，乐观锁回滚重试</strong>，它们各有优缺点，不要认为一种一定好于另一种。像乐观锁适用于写比较少的情况下，即冲突真的很少发生的时候，这样可以省去锁的开销，加大了系统的整个吞吐量。但如果经常产生冲突，上层应用会不断的进行重试，这样反倒是降低了性能，所以这种情况下用悲观锁就比较合适。</p>
+<p>说到乐观锁，就必须提到一个概念：<strong>CAS</strong></p>
+<p>什么是CAS呢？Compare-and-Swap，即<strong>比较并替换，</strong>也有叫做Compare-and-Set的，<strong>比较并设置</strong>。</p>
+<p>1、比较：读取到了一个值A，在将其更新为B之前，检查原值是否仍为A（未被其他线程改动）。</p>
+<p>2、设置：如果是，将A更新为B，结束。[<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/71156910#ref_1">1]</a>如果不是，则什么都不做。</p>
+<p>上面的两步操作是原子性的，可以简单地理解为瞬间完成，在CPU看来就是一步操作。</p>
+<p>有了CAS，就可以实现一个<strong>乐观锁</strong>：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c">data = <span class="hljs-number">123</span>; <span class="hljs-comment">// 共享数据</span><br><br><span class="hljs-comment">/* 更新数据的线程会进行如下操作 */</span><br>flag = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">while</span> (flag) &#123;<br>    oldValue = data; <span class="hljs-comment">// 保存原始数据</span><br>    newValue = doSomething(oldValue); <br><br>    <span class="hljs-comment">// 下面的部分为CAS操作，尝试更新data的值</span><br>    <span class="hljs-keyword">if</span> (data == oldValue) &#123; <span class="hljs-comment">// 比较</span><br>        data = newValue; <span class="hljs-comment">// 设置</span><br>        flag = <span class="hljs-literal">false</span>; <span class="hljs-comment">// 结束</span><br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>	<span class="hljs-comment">// 啥也不干，循环重试</span><br>    &#125;<br>&#125;<br><span class="hljs-comment">/* </span><br><span class="hljs-comment">   很明显，这样的代码根本不是原子性的，</span><br><span class="hljs-comment">   因为真正的CAS利用了CPU指令，</span><br><span class="hljs-comment">   这里只是为了展示执行流程，本意是一样的。</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<p>这是一个简单直观的乐观锁实现，它允许多个线程同时读取（因为根本没有加锁操作），但是只有一个线程可以成功更新数据，并导致其他要更新数据的线程回滚重试。 CAS利用CPU指令，从硬件层面保证了操作的原子性，以达到类似于锁的效果。</p>
+<p><img src="https://pic3.zhimg.com/80/v2-3c683e1f88faa31152fc35d14b8fb8de_720w.jpg" srcset="/img/loading.gif" lazyload alt="img">Java中真正的CAS操作调用的native方法</p>
+<p>因为整个过程中并没有“加锁”和“解锁”操作，因此乐观锁策略也被称为<strong>无锁编程</strong>。换句话说，乐观锁其实不是“锁”，它仅仅是一个循环重试CAS的算法而已！</p>
 
             </div>
             <hr>
