@@ -281,7 +281,7 @@
 <p><font color="red"><strong>线程分为 用户线程 和 守护线程</strong></font></p>
 <p><strong>虚拟机需要等待用户线程全部执行结束,才会停止运行</strong></p>
 <p><strong>当用户线程执行完毕后, 虚拟机就会停止,而不会等待守护线程执行完毕</strong></p>
-<h3 id="6-线程同步"><a href="#6-线程同步" class="headerlink" title="6.线程同步"></a>6.线程同步</h3><p><img src="/2021/06/27/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/syn.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="6-线程同步"><a href="#6-线程同步" class="headerlink" title="6. 线程同步"></a>6. 线程同步</h3><p><img src="/2021/06/27/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/syn.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li><p>同步方法</p>
 <p>默认上锁的对象为this  </p>
@@ -291,7 +291,7 @@
 </ul>
 <h3 id="7-线程死锁"><a href="#7-线程死锁" class="headerlink" title="7. 线程死锁"></a>7. 线程死锁</h3><p>死锁就是多个线程相互占有对方需要的资源,需要对方占有的资源,却占有对方需要的资源,形成闭环</p>
 <p><img src="/2021/06/27/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%AD%BB%E9%94%81%E7%9A%84%E5%9B%9B%E4%B8%AA%E6%9D%A1%E4%BB%B6.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="8-锁-Lock"><a href="#8-锁-Lock" class="headerlink" title="8.锁 Lock"></a>8.锁 Lock</h3><h4 id="1-可重入锁-ReentrantLock"><a href="#1-可重入锁-ReentrantLock" class="headerlink" title="(1) 可重入锁 ReentrantLock"></a>(1) 可重入锁 ReentrantLock</h4><p><font color="red"><strong>某个线程已经获得某个锁，可以再次获取锁而不会出现死锁</strong></font></p>
+<h3 id="8-锁-Lock"><a href="#8-锁-Lock" class="headerlink" title="8. 锁 Lock"></a>8. 锁 Lock</h3><h4 id="1-可重入锁-ReentrantLock"><a href="#1-可重入锁-ReentrantLock" class="headerlink" title="(1) 可重入锁 ReentrantLock"></a>(1) 可重入锁 ReentrantLock</h4><p><font color="red"><strong>某个线程已经获得某个锁，可以再次获取锁而不会出现死锁</strong></font></p>
 <p><strong>允许同一个线程多次获取同一把锁</strong></p>
 <p><font color="red"><strong>ReentrantLock</strong></font> <strong>和</strong> <font color="red"><strong>synchronized</strong></font> <strong>都是可重入锁</strong></p>
 <h4 id="2-乐观锁和悲观锁"><a href="#2-乐观锁和悲观锁" class="headerlink" title="(2) 乐观锁和悲观锁"></a>(2) 乐观锁和悲观锁</h4><p>锁的一种宏观分类方式是<strong>悲观锁</strong>和<strong>乐观锁</strong>。悲观锁与乐观锁<strong>并不是特指某个锁</strong>（Java中没有哪个Lock实现类就叫PessimisticLock或OptimisticLock），而是在并发情况下的两种不同策略。</p>
