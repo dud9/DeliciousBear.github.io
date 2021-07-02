@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      2.7k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      30
+      35
        分钟
     </span>
   
@@ -269,6 +269,55 @@
 <h1 id="二-进阶"><a href="#二-进阶" class="headerlink" title="二.  进阶"></a>二.  进阶</h1><h3 id="1-三种线程池"><a href="#1-三种线程池" class="headerlink" title="1. 三种线程池"></a>1. 三种线程池</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 固定个数的线程池</span><br>ExecutorService e = Executors.newFixedThreadPool(<span class="hljs-number">5</span>);<br><span class="hljs-comment">// 延迟执行线程池</span><br>ExecutorService e1 = Executors.newScheduledThreadPool(<span class="hljs-number">5</span>);<br><span class="hljs-comment">// 可以缓存的线程池</span><br>ExecutorService e2 = Executors.newCachedThreadPool();<br></code></pre></td></tr></table></figure>
 
 <p><img src="/2021/06/27/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E7%BA%BF%E7%A8%8B%E6%B1%A0.png" srcset="/img/loading.gif" lazyload></p>
+<p><font color="red">**参数： **</font></p>
+<ul>
+<li><p>corePoolSize   （核心线程数）</p>
+<ul>
+<li>核心线程会一直存活， 即使没有任务 （除非设置allowCoreThreadTimeout 为 True）</li>
+<li>当线程数 小于 核心线程数时，即使有线程空闲，线程池也会创建新的线程处理</li>
+<li>设置allowCoreThreadTimeout 为 True，核心线程也会超时关闭</li>
+</ul>
+</li>
+<li><p>queueCapacity （任务队列的容量）</p>
+<ul>
+<li>当线程数达到核心线程的最大数量，新的任务会放到任务队列中等待</li>
+</ul>
+</li>
+<li><p>maxPoolSize  （最大线程数）</p>
+<ul>
+<li>当线程数 corePoolSize =&lt;num &lt; maxPoolSize , 且 任务队列 满了， 则会创建新线程，直到 maxPoolSize  </li>
+<li>当线程数达到 maxPoolSize  ，且任务队列页面，新任务会被拒绝</li>
+</ul>
+</li>
+<li><p>keepAliveTime （线程空闲时间）</p>
+<ul>
+<li>当线程空闲时间达到 KeepAliveTIme时，线程会销毁，直至数量达到 corePoolSize   </li>
+<li>当设置 allowCoreThreadTimeout 为 true时，达到 KeepAliveTIme，线程会销毁直至数量为0</li>
+</ul>
+</li>
+<li><p>allowCoreThreadTimeout （允许核心线程超时）</p>
+</li>
+<li><p>rejectedExecutionHandler（任务拒绝处理器）</p>
+<ul>
+<li>当线程达到maxPoolSize  时，且任务队列满了，会拒绝新任务</li>
+<li>当线程池被调用shutdown()后，会等待线程池里的任务执行完毕，再shutdown。如果在调用shutdown()和线程池真正shutdown之间提交任务，会拒绝新任务</li>
+</ul>
+<p><strong>拒绝策略</strong>：</p>
+<ul>
+<li>AbortPolicy 丢弃任务，抛运行时异常 （<strong>默认</strong>）</li>
+<li>CallerRunsPolicy 执行任务</li>
+<li>DiscardPolicy 忽视，什么都不会发生</li>
+<li>DiscardOldestPolicy 从队列中踢出最先进入队列（最后一个执行）的任务</li>
+</ul>
+</li>
+</ul>
+<p><strong>执行流程：</strong></p>
+<ol>
+<li>当线程数 &lt; 核心线程数时， 不管有没有空闲的线程，线程池都会创建新的线程来执行新的任务</li>
+<li>当线程数 &gt;= 核心线程数时，新任务会被放在任务队列中等待</li>
+<li>当线程数 &gt;= 核心线程数，且任务队列满的时候，会创建新的线程</li>
+<li>当线程数达到最大线程数时，新任务会被拒绝</li>
+</ol>
 <h3 id="2-线程的五个状态"><a href="#2-线程的五个状态" class="headerlink" title="2. 线程的五个状态"></a>2. 线程的五个状态</h3><p><img src="/2021/06/27/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/5%E4%B8%AA%E7%8A%B6%E6%80%81(1).png" srcset="/img/loading.gif" lazyload></p>
 <p><img src="/2021/06/27/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/5%E4%B8%AA%E7%8A%B6%E6%80%81(2).png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="3-线程的主要方法"><a href="#3-线程的主要方法" class="headerlink" title="3. 线程的主要方法"></a>3. 线程的主要方法</h3><p><img src="/2021/06/27/Thread-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/method.png" srcset="/img/loading.gif" lazyload></p>
