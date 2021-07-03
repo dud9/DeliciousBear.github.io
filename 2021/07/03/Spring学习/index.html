@@ -232,7 +232,7 @@
 <span id="more"></span>
 
 <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><h2 id="三大思想"><a href="#三大思想" class="headerlink" title="三大思想"></a>三大思想</h2><p>DI(依赖注入), IOC (控制翻转) 和 AOP (面向切面)</p>
-<h2 id="Spring-七大模块"><a href="#Spring-七大模块" class="headerlink" title="Spring 七大模块"></a>Spring 七大模块</h2><p><img src="/2021/07/03/Spring%E5%AD%A6%E4%B9%A0/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210703145541806.png" srcset="/img/loading.gif" lazyload alt="image-20210703145541806"></p>
+<h2 id="Spring-七大模块"><a href="#Spring-七大模块" class="headerlink" title="Spring 七大模块"></a>Spring 七大模块</h2><p><img src="/2021/07/03/Spring%E5%AD%A6%E4%B9%A0/%E4%B8%83%E4%B8%AA%E6%A8%A1%E5%9D%97.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="IOC-控制反转"><a href="#IOC-控制反转" class="headerlink" title="IOC 控制反转"></a>IOC 控制反转</h2><p>是一种设计思想, 用IOC容器实现控制反转, 其实现的方式是(DI)依赖注入.</p>
 <p>DI(依赖注入) 有两种方式 「构造方法」和 「set方法」</p>
 <p>对象由 Spring  创建 管理 装配</p>
@@ -274,10 +274,10 @@
 <p>  <strong>可以通过「test2」「u1」「u2」「u3」来获取 bean 对象</strong></p>
 <h3 id="3-import"><a href="#3-import" class="headerlink" title="3. import"></a>3. import</h3><p>一般用于团队开发, 可以将多个配置文件导入合并为一个.</p>
 <p>当有多个 xml 文件时</p>
-<p><img src="/2021/07/03/Spring%E5%AD%A6%E4%B9%A0/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210703192524574.png" srcset="/img/loading.gif" lazyload alt="image-20210703192524574"></p>
+<p><img src="/2021/07/03/Spring%E5%AD%A6%E4%B9%A0/import.png" srcset="/img/loading.gif" lazyload></p>
 <p>可以 使用 import 将其 合并到一个中</p>
 <p><strong>e.g.</strong></p>
-<p><img src="/2021/07/03/Spring%E5%AD%A6%E4%B9%A0/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210703192614374.png" srcset="/img/loading.gif" lazyload alt="image-20210703192614374"></p>
+<p><img src="/2021/07/03/Spring%E5%AD%A6%E4%B9%A0/import2.png" srcset="/img/loading.gif" lazyload></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java">ApplicationContext context = <span class="hljs-keyword">new</span> <br>                ClassPathXmlApplicationContext(<span class="hljs-string">&quot;applicationContext.xml&quot;</span>);<br></code></pre></td></tr></table></figure>
 
 <p><strong>统一注册到容器中</strong></p>
@@ -331,7 +331,7 @@
 
 
 
-<h2 id="bean的作用域-scope"><a href="#bean的作用域-scope" class="headerlink" title="bean的作用域 (scope)"></a>bean的作用域 (scope)</h2><p><img src="/2021/07/03/Spring%E5%AD%A6%E4%B9%A0/Users\ASUS\AppData\Roaming\Typora\typora-user-images\image-20210703202653223.png" srcset="/img/loading.gif" lazyload alt="image-20210703202653223"></p>
+<h2 id="bean的作用域-scope"><a href="#bean的作用域-scope" class="headerlink" title="bean的作用域 (scope)"></a>bean的作用域 (scope)</h2><p><img src="/2021/07/03/Spring%E5%AD%A6%E4%B9%A0/scope.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li><p>单例模式(singleton)  「默认」</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;bean id=<span class="hljs-string">&quot;lyc&quot;</span> <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">&quot;com.duende.pojo.User&quot;</span> scope=<span class="hljs-string">&quot;singleton&quot;</span>&gt;<br>      &lt;property name=<span class="hljs-string">&quot;name&quot;</span> value=<span class="hljs-string">&quot;lyc&quot;</span>&gt;&lt;/property&gt;<br>  &lt;/bean&gt;<br></code></pre></td></tr></table></figure></li>
