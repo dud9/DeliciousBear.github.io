@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.6k 字
+      2.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      40
+      46
        分钟
     </span>
   
@@ -355,7 +355,7 @@
 
 <h3 id="2-使用注解-自动装配"><a href="#2-使用注解-自动装配" class="headerlink" title="2. 使用注解 自动装配"></a>2. 使用注解 自动装配</h3><p>准备工作：利用注解的方式注入属性。</p>
 <p>1、在spring配置文件中引入context文件头</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs awk">xmlns:context=<span class="hljs-string">&quot;http://www.springframework.org/schema/context&quot;</span><br><br>http:<span class="hljs-regexp">//</span>www.springframework.org<span class="hljs-regexp">/schema/</span>context<br>http:<span class="hljs-regexp">//</span>www.springframework.org<span class="hljs-regexp">/schema/</span>context/spring-context.xsd<br></code></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs xml"><br><span class="hljs-meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">beans</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span></span><br><span class="hljs-tag">	   <span class="hljs-attr">xmlns:context</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/context&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xmlns:xsi</span>=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span><br><span class="hljs-tag">       <span class="hljs-attr">xsi:schemaLocation</span>=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans</span></span><br><span class="hljs-string"><span class="hljs-tag">        https://www.springframework.org/schema/beans/spring-beans.xsd</span></span><br><span class="hljs-string"><span class="hljs-tag">        http://www.springframework.org/schema/context</span></span><br><span class="hljs-string"><span class="hljs-tag">	    http://www.springframework.org/schema/context/spring-context.xsd&quot;</span>&gt;</span><br><br>   <span class="hljs-tag">&lt;<span class="hljs-name">bean</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;lyc&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;com.duende.pojo.User&quot;</span>&gt;</span><br>       <span class="hljs-tag">&lt;<span class="hljs-name">property</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;lyc&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">property</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">bean</span>&gt;</span><br><br><span class="hljs-tag">&lt;/<span class="hljs-name">beans</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <p>2、开启属性注解支持！</p>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crystal">&lt;<span class="hljs-symbol">context:</span><span class="hljs-keyword">annotation</span>-<span class="hljs-title">config</span>/&gt;<br></code></pre></td></tr></table></figure>
@@ -412,6 +412,34 @@
 <p>2、@Autowired默认按类型装配（属于spring规范），默认情况下必须要求依赖对象必须存在，如果要允许null 值，可以设置它的required属性为false，如：@Autowired(required=false) ，如果我们想使用名称装配可以结合@Qualifier注解进行使用</p>
 <p>3、@Resource（属于J2EE复返），默认按照名称进行装配，名称可以通过name属性进行指定。如果没有指定name属性，当注解写在字段上时，默认取字段名进行按照名称查找，如果注解写在setter方法上默认取属性名进行装配。当找不到与名称匹配的bean时才按照类型进行装配。但是需要注意的是，如果name属性一旦指定，就只会按照名称进行装配。</p>
 <p>它们的作用相同都是用注解方式注入对象，但执行顺序不同。@Autowired先byType，@Resource先byName。</p>
+<h2 id="使用注解开发"><a href="#使用注解开发" class="headerlink" title="使用注解开发"></a>使用注解开发</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">&lt;?xml version=<span class="hljs-string">&quot;1.0&quot;</span> encoding=<span class="hljs-string">&quot;UTF-8&quot;</span>?&gt;<br>&lt;beans xmlns=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans&quot;</span><br>	   xmlns:context=<span class="hljs-string">&quot;http://www.springframework.org/schema/context&quot;</span><br>       xmlns:xsi=<span class="hljs-string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br>       xsi:schemaLocation=<span class="hljs-string">&quot;http://www.springframework.org/schema/beans</span><br><span class="hljs-string">        https://www.springframework.org/schema/beans/spring-beans.xsd</span><br><span class="hljs-string">        http://www.springframework.org/schema/context</span><br><span class="hljs-string">	    http://www.springframework.org/schema/context/spring-context.xsd&quot;</span>&gt;<br><br>  	&lt;context:annotation-config/&gt;<br><br>&lt;/beans&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-bean"><a href="#1-bean" class="headerlink" title="1. bean"></a>1. bean</h3><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">&lt;<span class="hljs-keyword">context</span>:<span class="hljs-keyword">component</span>-scan base-<span class="hljs-keyword">package</span>=<span class="hljs-string">&quot;com.duende.pojo&quot;</span>/&gt;<br></code></pre></td></tr></table></figure>
+
+<p>包扫描 + @component注解</p>
+<h3 id="2-属性注入"><a href="#2-属性注入" class="headerlink" title="2. 属性注入"></a>2. 属性注入</h3><p>@value (标注在属性变量或者 setter方法上)</p>
+<h3 id="3-衍生的注解"><a href="#3-衍生的注解" class="headerlink" title="3. 衍生的注解"></a>3. 衍生的注解</h3><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs less"><span class="hljs-variable">@Component</span><br><span class="hljs-variable">@Repository</span><br><span class="hljs-variable">@Service</span><br><span class="hljs-variable">@Controller</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="4-自动装配"><a href="#4-自动装配" class="headerlink" title="4. 自动装配"></a>4. 自动装配</h3><p>@autowired + @Qualifier  (按类型, 名称)</p>
+<p>@resource (按名称,类型)</p>
+<h3 id="5-作用域"><a href="#5-作用域" class="headerlink" title="5. 作用域"></a>5. 作用域</h3><p><strong>@scope(“prototype”)</strong></p>
+<h2 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h2><p>和静态代理的区别:</p>
+<ul>
+<li>静态代理是提前写好代理类</li>
+<li>动态代理是动态生成代理类</li>
+</ul>
+<p>两种方式:</p>
+<ul>
+<li>基于接口: JDK原生的方式</li>
+</ul>
+<p>Proxy    InvocationHandler</p>
+<ul>
+<li>基于类: cglib</li>
+</ul>
 
             </div>
             <hr>
