@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      631 字
+      629 字
     </span>
   
 
@@ -246,8 +246,8 @@
 <p><strong>摩尔投票</strong> ：</p>
 <p>在集合中寻找可能存在的多数元素，这一元素在输入的序列重复出现并占到了序列元素的一半以上；在第一遍遍历之后应该再进行一个遍历以统计第一次算法遍历的结果出现次数，确定其是否为众数；如果一个序列中没有占到多数的元素，那么第一次的结果就可能是无效的随机元素。</p>
 <p>换句话说，每次将两个不同的元素进行「抵消」，如果最后有元素剩余，则「可能」为元素个数大于总数一半的那个。</p>
-<p>具体的，我们定义一个变量 xx 来保存那个可能为主要元素的值，cntcnt 用来记录该值的出现次数。然后在遍历数组 numsnums 过程中执行如下逻辑：</p>
-<p>如果 cntcnt 为 00：说明之前出现过的 xx 已经被抵消完了，更新一下 xx 为当前值，出现次数为 11：x = nums[i], cnt = 1；<br>如果 cntcnt 不为 00：说明之前统计的 xx 还没被抵消完，这是根据 nums[i]nums[i] 与 xx 是否相等进行计算即可：cnt += nums[i] == x ? 1 : -1。<br>当处理完 numsnums 之后，我们得到了一个「可能」的主要元素。注意只是可能，因为我们在处理过程中只使用了 xx 和 cntcnt 来记录，我们是无法确定最后剩下的 xx 是经过多次抵消后剩余的主要元素，还是只是不存在主要元素的数组中的无效随机元素。</p>
+<p>具体的，我们定义一个变量 x 来保存那个可能为主要元素的值，cnt 用来记录该值的出现次数。然后在遍历数组 nums 过程中执行如下逻辑：</p>
+<p>如果 cnt 为 0：说明之前出现过的 xx 已经被抵消完了，更新一下 x 为当前值，出现次数为 1：x = nums[i], cnt = 1；<br>如果 cnt不为 0：说明之前统计的 xx 还没被抵消完，这是根据 nums[i]与 x 是否相等进行计算即可：cnt += nums[i] == x ? 1 : -1。<br>当处理完 nums之后，我们得到了一个「可能」的主要元素。注意只是可能，因为我们在处理过程中只使用了 x 和 cnt 来记录，我们是无法确定最后剩下的 xx 是经过多次抵消后剩余的主要元素，还是只是不存在主要元素的数组中的无效随机元素。</p>
 <p>因此我们需要再进行一次遍历，检查这个「可能」的主要元素 xx 的出现次数是否超过总数一半。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">majorityElement</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> n = nums.length;<br>        <span class="hljs-keyword">int</span> x = -<span class="hljs-number">1</span>, cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : nums) &#123;<br>            <span class="hljs-keyword">if</span> (cnt == <span class="hljs-number">0</span>) &#123;<br>                x = i;<br>                cnt = <span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                cnt += i == x ? <span class="hljs-number">1</span> : -<span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;<br>        cnt = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i : nums) <span class="hljs-keyword">if</span> (x == i) cnt++;<br>        <span class="hljs-keyword">return</span> (cnt &gt; n / <span class="hljs-number">2</span>) ? x : -<span class="hljs-number">1</span>; <br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
